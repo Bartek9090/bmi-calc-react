@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Bmi and Calories Calculator 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+-------------------------
+## Description
+Bmi calc app built with react. This project is utilizing functional components as well as react hooks.
+The purpose of building this project was to acquire and consolidate knowledge concerning React framework.
+In particular, issues related to dividing the application into components, moving the state up and using hooks. 
+This is a project entirely of my own invention.
+ 
+## About Project 
+Thie project giving you oportunities to calculate your BMI and estimate daily calories needs based on activity level.
+To use this program:
+  
+- Fill in the required information (age, weight, height, gender, activity level).
+- Click the "Submit" button to calculate BMI and daily calories.
+- View the results on the screen, including an image representation based on BMI.
 
-## Available Scripts
+## Screenshots
 
-In the project directory, you can run:
+### ScreenShot
+![bmiCalc1](https://github.com/Bartek9090/bmi-calc-react/assets/80546803/ef4d3473-9b73-48e7-83a3-50031e974140)
+![bmiCalc2](https://github.com/Bartek9090/bmi-calc-react/assets/80546803/e355a833-06a1-4587-95b5-ede034a4895d)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies:
+* [React](https://reactjs.org/) version: 17.0.2
+* [react-icons](https://react-icons.github.io/react-icons/) version: 4.3.1
+- React
+- JavaScript
+- CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features:
+- **BMI Calculator:** Estimate your Body Mass Index based on weight, height, age, and gender.
+- **Calories Calculator:** Estimate your daily caloric needs based on BMI and activity level.
+- App will display diffrent img depends on chosen gender and activity level
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### How to Run
+In order to get a copy of this project and run it locally, first of all, make sure you already have node and npm installed in your system.
+Clone this repository
 
-### `npm run build`
+```bash
+$ git clone https://github.com/Bartek9090/bmi-calc-react.git
+```
+After cloning the repo, go to its root directory and install dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`$ cd to file locaction` </br>
+`$ npm install` </br>
+Once the dependencies are installed, start the application,
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+$ `npm start`</br>
+Then you will have access to application on localhost:3000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Dependencies:
+* [React](https://reactjs.org/) version: 17.0.2
+* [react-icons](https://react-icons.github.io/react-icons/) version: 4.3.1
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Help
+If you have any problem with website please do not hesitate text to me.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Author
+Bartek9090 
+**
