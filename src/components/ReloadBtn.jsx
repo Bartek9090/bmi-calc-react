@@ -6,8 +6,8 @@ export default function ReloadBtn() {
   };
 
   return (
-    <button className="btn" onClick={reload} type="submit">
-      Reload
+    <button className="btn" onClick={reload}>
+      Clear
     </button>
   );
 }

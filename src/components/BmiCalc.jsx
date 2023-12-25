@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
 import DisplayImg from "./DisplayImg";
 
@@ -7,38 +7,42 @@ export default function BmiCalc({ weight, height, age, gender, display }) {
   const [message, setMessage] = useState("");
   const [displayBmi, setDisplayBmi] = useState(false);
 
-  const calculateBmi = () => {
-    if (
-      weight.trim() === "" ||
-      height === "" ||
-      age === "" ||
-      age > 115 ||
-      gender === ""
-    ) {
-      alert("Your inputs are incorrect");
-      return;
-    }
+  useEffect(() => {
+    const calculateBmi = () => {
+      if (
+        weight.trim() === "" ||
+        weight <= 40 ||
+        weight > 230 ||
+        height.trim() === "" ||
+        height <= 50 ||
+        height > 250 ||
+        age === "" ||
+        age <= 15 ||
+        age > 150 ||
+        gender === ""
+      ) {
+        alert("Please provide valid inputs.");
+        return;
+      }
 
-    let heightInMeters = height / 100;
-    let calculatedBmi = weight / (heightInMeters * heightInMeters);
-    let roundedBmi = calculatedBmi.toFixed(0);
+      const heightInMeters = height / 100;
+      const calculatedBmi = weight / (heightInMeters * heightInMeters);
+      const roundedBmi = Math.round(calculatedBmi);
 
-    setBmi(roundedBmi);
-    setDisplayBmi(true);
+      setBmi(roundedBmi);
+      setDisplayBmi(true);
 
-    if (calculatedBmi < 25) {
-      setMessage("You are underweight");
-    } else if (calculatedBmi >= 25 && calculatedBmi < 30) {
-      setMessage("You are a healthy weight");
-    } else {
-      setMessage("You are overweight");
-    }
-  };
+      if (calculatedBmi < 20) {
+        setMessage("You are underweight");
+      } else if (calculatedBmi >= 20 && calculatedBmi < 25) {
+        setMessage("You are a healthy weight");
+      } else {
+        setMessage("You are overweight");
+      }
+    };
 
-  // Call calculateBmi on component mount
-  React.useEffect(() => {
     calculateBmi();
-  }, []);
+  }, [weight, height, age, gender]);
 
   return (
     <div>
@@ -48,7 +52,7 @@ export default function BmiCalc({ weight, height, age, gender, display }) {
             <>
               <h3>Your BMI is: {bmi} </h3>
               <p className="paragraphs-style">{message}</p>
-              {bmi === "0" ? null : <DisplayImg bmi={bmi} gender={gender} />}
+              {bmi !== 0 && <DisplayImg bmi={bmi} gender={gender} />}
             </>
           )}
         </div>

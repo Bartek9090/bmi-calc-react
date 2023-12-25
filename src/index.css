@@ -17,7 +17,7 @@ body {
   align-items: center;
   width: 100%;
 }
-.main-cointainer {
+.main-container {
   background-color: black;
   box-shadow: 0px 0px 12px #ccc;
   border-radius: 8px;
@@ -112,7 +112,7 @@ label {
 }
 
 @media (min-width: 756px) {
-  .main-cointainer {
+  .main-container {
     width: 60%;
   }
 }

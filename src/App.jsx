@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import "./index.css";
 import CaloriesCalc from "./components/CaloriesCalc";
 import BmiCalc from "./components/BmiCalc";
@@ -22,7 +21,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <div className="main-cointainer">
+      <div className="main-container">
         <h1>BMI Calculator</h1>
         <p className="paragraphs-style">
           Use the app to estimate the number of daily calories your body needs
