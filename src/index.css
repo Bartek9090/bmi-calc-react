@@ -35,6 +35,19 @@ body {
   margin-bottom: 5px;
 }
 
+.input-container.error input {
+  border: 2px solid red;
+}
+
+.input-container.error input,
+.input-container.error select {
+  color: red;
+}
+
+.input-container.error .input-info {
+  color: red;
+}
+
 .input-info {
   margin-left: 10px;
 }

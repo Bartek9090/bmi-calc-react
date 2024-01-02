@@ -4,34 +4,70 @@ import CaloriesCalc from "./components/CaloriesCalc";
 import BmiCalc from "./components/BmiCalc";
 import ReloadBtn from "./components/ReloadBtn";
 
+const genderOptions = [
+  { value: "", label: "--Choose an option--" },
+  { value: "Male", label: "Male" },
+  { value: "Female", label: "Female" },
+];
+const activityOptions = [
+  { value: "", label: "--Choose an option--" },
+  { value: "inactive", label: "Inactive" },
+  { value: "somewhat active", label: "Somewhat active" },
+  { value: "active", label: "Active" },
+  { value: "very active", label: "Very active" },
+];
+
+const initialValidationErrors = {
+  weight: false,
+  height: false,
+  age: false,
+  gender: false,
+  activity: false,
+};
+
 export default function App() {
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [activity, setActivity] = useState("");
+  const [formData, setFormData] = useState({
+    weight: "",
+    height: "",
+    age: "",
+    gender: "",
+    activity: "",
+  });
 
   const [displayBmiCalc, setDisplayBmiCalc] = useState(false);
   const [displayCaloriesCalc, setDisplayCaloriesCalc] = useState(false);
+  const [validationErrors, setValidationErrors] = useState(
+    initialValidationErrors
+  );
   const bmiCalcRef = useRef(null);
 
+  const handleInputChange = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value,
+    });
+    setValidationErrors({
+      ...validationErrors,
+      [field]: false,
+    });
+  };
+
   const validateInputs = () => {
-    if (
-      weight.trim() === "" ||
-      weight < 40 ||
-      weight > 230 ||
-      height.trim() === "" ||
-      height < 50 ||
-      height > 250 ||
-      age === "" ||
-      age < 15 ||
-      age > 120 ||
-      (gender !== "Male" && gender !== "Female")
-    ) {
-      alert("Please provide valid inputs for BMI.");
-      return false;
-    }
-    return true;
+    const errors = {
+      weight:
+        formData.weight.trim() === "" ||
+        formData.weight < 40 ||
+        formData.weight > 230,
+      height:
+        formData.height.trim() === "" ||
+        formData.height < 50 ||
+        formData.height > 250,
+      age: formData.age === "" || formData.age < 15 || formData.age > 120,
+      gender: formData.gender !== "Male" && formData.gender !== "Female",
+    };
+
+    setValidationErrors(errors);
+    return !Object.values(errors).some((error) => error);
   };
 
   const handleButtonClick = () => {
@@ -56,78 +92,120 @@ export default function App() {
           to maintain your current weight and what is the value of your BMI.
         </p>
         <form>
-          <div className="input-container">
+          <div
+            className={`input-container ${validationErrors.age ? "error" : ""}`}
+          >
             <div className="label-info-container">
               <label htmlFor="age">Age</label>
-              <p className="input-info">(Valid range: 15 - 120)</p>
+              <p
+                className={`input-info ${
+                  validationErrors.age ? "error-info" : ""
+                }`}
+              >
+                (Valid range: 15 - 120)
+              </p>
             </div>
             <input
               id="age"
               type="number"
-              value={age}
-              onChange={(e) => {
-                setAge(e.target.value);
-              }}
+              value={formData.age}
+              onChange={(e) => handleInputChange("age", e.target.value)}
+              className={validationErrors.age ? "error-border" : ""}
             />
           </div>
-          <div className="input-container">
+
+          <div
+            className={`input-container ${
+              validationErrors.weight ? "error" : ""
+            }`}
+          >
             <div className="label-info-container">
               <label htmlFor="weight">Weight</label>
-              <p className="input-info">(Valid range: 40 - 230)</p>
+              <p
+                className={`input-info ${
+                  validationErrors.weight ? "error-info" : ""
+                }`}
+              >
+                (Valid range: 40 - 230)
+              </p>
             </div>
             <input
               id="weight"
               type="number"
-              value={weight}
-              onChange={(e) => {
-                setWeight(e.target.value);
-              }}
+              value={formData.weight}
+              onChange={(e) => handleInputChange("weight", e.target.value)}
+              className={validationErrors.weight ? "error-border" : ""}
             />
           </div>
 
-          <div className="input-container">
+          <div
+            className={`input-container ${
+              validationErrors.height ? "error" : ""
+            }`}
+          >
             <div className="label-info-container">
               <label htmlFor="height">Height</label>
-              <p className="input-info">(Valid range: 50 - 250)</p>
+              <p
+                className={`input-info ${
+                  validationErrors.height ? "error-info" : ""
+                }`}
+              >
+                (Valid range: 50 - 250)
+              </p>
             </div>
             <input
               id="height"
               type="number"
-              value={height}
-              onChange={(e) => {
-                setHeight(e.target.value);
-              }}
+              value={formData.height}
+              onChange={(e) => handleInputChange("height", e.target.value)}
+              className={validationErrors.height ? "error-border" : ""}
             />
           </div>
-          <div>
-            <label htmlFor="gender">Gender</label>
+
+          <div
+            className={`input-container ${
+              validationErrors.gender ? "error" : ""
+            }`}
+          >
+            <div className="label-info-container">
+              <label htmlFor="gender">Gender</label>
+              <p
+                className={`input-info ${
+                  validationErrors.gender ? "error-info" : ""
+                }`}
+              >
+                (Select your gender)
+              </p>
+            </div>
             <select
               id="gender"
-              type="text"
-              value={gender}
-              onChange={(e) => {
-                setGender(e.target.value);
-              }}
+              value={formData.gender}
+              onChange={(e) => handleInputChange("gender", e.target.value)}
+              className={validationErrors.gender ? "error-border" : ""}
             >
-              <option disabled={false} value="">
-                --Choose and option--
-              </option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              {genderOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  disabled={option.value === ""}
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
+
           <div>
             <label htmlFor="activity">Activity level</label>
             <select
               id="activity"
               type="text"
-              value={activity}
-              onChange={(e) => {
-                setActivity(e.target.value);
-              }}
+              value={formData.activity}
+              onChange={(e) => handleInputChange("activity", e.target.value)}
+              className={validationErrors.activity ? "error-border" : ""}
             >
-              <option disabled={false} value="">
-                --Choose and option--
+              <option disabled value="">
+                --Choose an option--
               </option>
               <option value="inactive">Inactive</option>
               <option value="somewhat active">Somewhat active</option>
@@ -136,7 +214,6 @@ export default function App() {
             </select>
           </div>
         </form>
-
         <button className="btn" onClick={handleButtonClick}>
           Submit
         </button>
@@ -144,21 +221,21 @@ export default function App() {
         {displayBmiCalc && (
           <BmiCalc
             ref={bmiCalcRef}
-            weight={weight}
-            height={height}
-            age={age}
-            gender={gender}
+            weight={formData.weight}
+            height={formData.height}
+            age={formData.age}
+            gender={formData.gender}
             display={displayBmiCalc}
           />
         )}
 
         {displayCaloriesCalc && (
           <CaloriesCalc
-            weight={weight}
-            height={height}
-            age={age}
-            gender={gender}
-            activity={activity}
+            weight={formData.weight}
+            height={formData.height}
+            age={formData.age}
+            gender={formData.gender}
+            activity={formData.activity}
           />
         )}
       </div>
