@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bmi-calc-react/static/css/main.a04b3a6b.css",
-    "main.js": "/bmi-calc-react/static/js/main.cc9f4f0b.js",
+    "main.css": "/bmi-calc-react/static/css/main.141beb71.css",
+    "main.js": "/bmi-calc-react/static/js/main.3306fbc3.js",
     "static/js/787.3db80c54.chunk.js": "/bmi-calc-react/static/js/787.3db80c54.chunk.js",
     "static/media/underweight-man-no-sentence.webp": "/bmi-calc-react/static/media/underweight-man-no-sentence.69f280fdacaea619af3d.webp",
     "static/media/underweight-women.webp": "/bmi-calc-react/static/media/underweight-women.ac45236a6cd21f9fe046.webp",
@@ -10,12 +10,12 @@
     "static/media/healthy-man.webp": "/bmi-calc-react/static/media/healthy-man.aeab4bf2a927b4977902.webp",
     "static/media/overweight-man.webp": "/bmi-calc-react/static/media/overweight-man.df9c1cb8a06d85696506.webp",
     "index.html": "/bmi-calc-react/index.html",
-    "main.a04b3a6b.css.map": "/bmi-calc-react/static/css/main.a04b3a6b.css.map",
-    "main.cc9f4f0b.js.map": "/bmi-calc-react/static/js/main.cc9f4f0b.js.map",
+    "main.141beb71.css.map": "/bmi-calc-react/static/css/main.141beb71.css.map",
+    "main.3306fbc3.js.map": "/bmi-calc-react/static/js/main.3306fbc3.js.map",
     "787.3db80c54.chunk.js.map": "/bmi-calc-react/static/js/787.3db80c54.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a04b3a6b.css",
-    "static/js/main.cc9f4f0b.js"
+    "static/css/main.141beb71.css",
+    "static/js/main.3306fbc3.js"
   ]
 }
