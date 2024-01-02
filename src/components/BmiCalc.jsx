@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from "react";
+// BmiCalc.jsx
+import React, { useState, useEffect, forwardRef } from "react";
 import "../index.css";
 import DisplayImg from "./DisplayImg";
 
-export default function BmiCalc({ weight, height, age, gender, display }) {
+const BmiCalc = forwardRef(({ weight, height, age, gender, display }, ref) => {
   const [bmi, setBmi] = useState("");
   const [message, setMessage] = useState("");
   const [displayBmi, setDisplayBmi] = useState(false);
 
   useEffect(() => {
     const calculateBmi = () => {
-      if (
-        weight.trim() === "" ||
-        weight <= 40 ||
-        weight > 230 ||
-        height.trim() === "" ||
-        height <= 50 ||
-        height > 250 ||
-        age === "" ||
-        age <= 15 ||
-        age > 150 ||
-        gender === ""
-      ) {
-        alert("Please provide valid inputs.");
-        return;
-      }
-
       const heightInMeters = height / 100;
       const calculatedBmi = weight / (heightInMeters * heightInMeters);
       const roundedBmi = Math.round(calculatedBmi);
@@ -42,10 +27,16 @@ export default function BmiCalc({ weight, height, age, gender, display }) {
     };
 
     calculateBmi();
-  }, [weight, height, age, gender]);
+  }, [weight, height, age, gender, display]);
+
+  useEffect(() => {
+    if (displayBmi && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [displayBmi, ref]);
 
   return (
-    <div>
+    <div ref={ref}>
       {display && (
         <div className="center">
           {displayBmi && (
@@ -59,4 +50,6 @@ export default function BmiCalc({ weight, height, age, gender, display }) {
       )}
     </div>
   );
-}
+});
+
+export default BmiCalc;

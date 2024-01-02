@@ -33,7 +33,7 @@ export default function CaloriesCalc({
         caloriesMultiplier = 1.725;
         break;
       default:
-        caloriesMultiplier = 1.2; // Default to inactive if the activity is not recognized
+        caloriesMultiplier = 1.2;
     }
 
     setCalories((bmr * caloriesMultiplier).toFixed(0));

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./index.css";
 import CaloriesCalc from "./components/CaloriesCalc";
 import BmiCalc from "./components/BmiCalc";
@@ -13,10 +13,38 @@ export default function App() {
 
   const [displayBmiCalc, setDisplayBmiCalc] = useState(false);
   const [displayCaloriesCalc, setDisplayCaloriesCalc] = useState(false);
+  const bmiCalcRef = useRef(null);
+
+  const validateInputs = () => {
+    if (
+      weight.trim() === "" ||
+      weight < 40 ||
+      weight > 230 ||
+      height.trim() === "" ||
+      height < 50 ||
+      height > 250 ||
+      age === "" ||
+      age < 15 ||
+      age > 120 ||
+      (gender !== "Male" && gender !== "Female")
+    ) {
+      alert("Please provide valid inputs for BMI.");
+      return false;
+    }
+    return true;
+  };
 
   const handleButtonClick = () => {
+    if (!validateInputs()) {
+      return;
+    }
+
     setDisplayBmiCalc(true);
     setDisplayCaloriesCalc(true);
+
+    if (bmiCalcRef.current) {
+      bmiCalcRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -28,8 +56,11 @@ export default function App() {
           to maintain your current weight and what is the value of your BMI.
         </p>
         <form>
-          <div>
-            <label htmlFor="age">Age</label>
+          <div className="input-container">
+            <div className="label-info-container">
+              <label htmlFor="age">Age</label>
+              <p className="input-info">(Valid range: 15 - 120)</p>
+            </div>
             <input
               id="age"
               type="number"
@@ -39,8 +70,11 @@ export default function App() {
               }}
             />
           </div>
-          <div>
-            <label htmlFor="weight">Weight</label>
+          <div className="input-container">
+            <div className="label-info-container">
+              <label htmlFor="weight">Weight</label>
+              <p className="input-info">(Valid range: 40 - 230)</p>
+            </div>
             <input
               id="weight"
               type="number"
@@ -50,8 +84,12 @@ export default function App() {
               }}
             />
           </div>
-          <div>
-            <label htmlFor="height">Height</label>
+
+          <div className="input-container">
+            <div className="label-info-container">
+              <label htmlFor="height">Height</label>
+              <p className="input-info">(Valid range: 50 - 250)</p>
+            </div>
             <input
               id="height"
               type="number"
@@ -105,6 +143,7 @@ export default function App() {
         <ReloadBtn />
         {displayBmiCalc && (
           <BmiCalc
+            ref={bmiCalcRef}
             weight={weight}
             height={height}
             age={age}
@@ -120,7 +159,6 @@ export default function App() {
             age={age}
             gender={gender}
             activity={activity}
-            display={displayCaloriesCalc}
           />
         )}
       </div>
